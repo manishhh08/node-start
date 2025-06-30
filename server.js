@@ -27,9 +27,35 @@ app.post("/login", (req, res) => {
   let userList = JSON.parse(fs.readFileSync("./data/users.json"));
 });
 
-// let user = userList.find((u)=>{
-//     return u.
-// });
+app.post("/login", (req, res) => {
+  console.log(req.body);
+
+  // read users.json
+
+  // load it to a userList array
+  let userList = JSON.parse(fs.readFileSync("./data/users.json"));
+
+  // compare the email and password from request with the userList array from the users.json
+  let user = userList.find((u) => {
+    return u.email == req.body.email && u.password == req.body.password;
+  });
+
+  if (user) {
+    // if they match login successful and direct to home.html
+
+    let homepage = fs.readFileSync(
+      "D:/project/dented-code/BTC-APRIL-2025/node/pages/home.html",
+      "utf8"
+    );
+
+    let htmlString = homepage.replace("[user]", user.name);
+
+    res.send(htmlString);
+  } else {
+    // if unsuccessful let login unsuccessful message
+    res.sendFile("D:/project/dented-code/BTC-APRIL-2025/node/pages/login.html");
+  }
+});
 
 //register page
 app.get("/register", (req, res) => {
