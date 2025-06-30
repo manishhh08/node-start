@@ -18,11 +18,20 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.sendFile("/Users/manish/Projects/node-start/pages/home.html");
 });
-
+//login page
 app.get("/login", (req, res) => {
   res.sendFile("/Users/manish/Projects/node-start/pages/login.html");
 });
+//read json and load it to a userList array
+app.post("/login", (req, res) => {
+  let userList = JSON.parse(fs.readFileSync("./data/users.json"));
+});
 
+let user = userList.find((u)=>{
+    return u.
+});
+
+//register page
 app.get("/register", (req, res) => {
   res.sendFile("/Users/manish/Projects/node-start/pages/register.html");
 });
