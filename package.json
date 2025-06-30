@@ -1,0 +1,25 @@
+{
+  "name": "start",
+  "version": "1.0.0",
+  "description": "first node project",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manishhh08/node-start.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manishhh08/node-start/issues"
+  },
+  "homepage": "https://github.com/manishhh08/node-start#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
