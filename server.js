@@ -27,9 +27,9 @@ app.post("/login", (req, res) => {
   let userList = JSON.parse(fs.readFileSync("./data/users.json"));
 });
 
-let user = userList.find((u)=>{
-    return u.
-});
+// let user = userList.find((u)=>{
+//     return u.
+// });
 
 //register page
 app.get("/register", (req, res) => {
