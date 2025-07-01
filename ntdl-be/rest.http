@@ -1,0 +1,17 @@
+GET http://localhost:3000
+
+###
+GET http://localhost:3000/api/v1/tasks
+
+###
+GET http://localhost:3000/api/v1/tasks/2
+
+###
+POST http://localhost:3000/api/v1/tasks/2
+Content-Type: application/json
+{
+    "id":3,
+    "name":"shyam",
+    "hour":40,
+    "type":"good"
+}
