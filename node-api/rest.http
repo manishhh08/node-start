@@ -1,16 +1,27 @@
-GET http://localhost:3000
+GET http://localhost:4000
 
 ###
-GET http://localhost:3000/api/v1/users
+GET http://localhost:4000/api/v1/users
 
 ###
-
-GET http://localhost:3000/api/v1/users/2
+GET http://localhost:4000/api/v1/users/2
 
 ###
-POST http://localhost:3000/api/v1/users/2
+POST http://localhost:4000/api/v1/users
 Content-Type: application/json
+
 {
     "id":3,
     "name":"shyam"
 }
+
+###
+PATCH http://localhost:4000/api/v1/users/2
+Content-Type: application/json
+
+{
+    "name":"gadha"
+}
+
+###
+DELETE http://localhost:4000/api/v1/users/2

@@ -67,6 +67,19 @@ app.patch("/api/v1/users/:userid", (req, res) => {
     user,
   });
 });
+//patch user
+app.patch("/api/v1/users/:userid", (req, res) => {
+  let id = req.params.userid;
+  let updatedData = req.body;
+  // { name: 'ghanshyam' }
+  let user = users.find((u) => u.id == id);
+  user.name = updatedData.name;
+  res.json({
+    status: true,
+    message: "User updated",
+    user,
+  });
+});
 // delete user
 app.delete("/api/v1/users/:userid", (req, res) => {
   let id = req.params.userid;
@@ -77,4 +90,4 @@ app.delete("/api/v1/users/:userid", (req, res) => {
     message: "User Deleted",
   });
 });
-app.listen(3000);
+app.listen(4000);
