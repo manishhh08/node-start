@@ -1,11 +1,11 @@
 import express from "express";
+import cors from "cors";
 const app = express();
+//allows cors for cross domain use
+app.use(cors());
 // app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-let tasks = [
-  { id: 1, task: "Task1", hour: 30, type: "bad" },
-  { id: 2, task: "Task2", hour: 30, type: "bad" },
-];
+let tasks = [];
 app.get("/", (req, res) => {
   res.json({
     status: true,
