@@ -4,16 +4,17 @@ GET http://localhost:3000
 GET http://localhost:3000/api/v1/tasks
 
 ###
-GET http://localhost:3000/api/v1/tasks/2
-
+GET http://localhost:3000/api/v1/tasks/686b4204d920d3ccc7a540ad
 ###
 POST http://localhost:3000/api/v1/tasks
 Content-Type: application/json
 
 
 {
-    "id":5,
-    "name":"shyam",
-    "hour":40,
+    "task":"good task 4",
+    "hour":30,
     "type":"good"
 }
+
+###
+DELETE  http://localhost:3000/api/v1/tasks/686b4204d920d3ccc7a540ad
