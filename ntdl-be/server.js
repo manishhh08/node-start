@@ -32,6 +32,15 @@ app.get("/api/v1/tasks", async (req, res) => {
   //   });
 
   let tasks = await Task.find();
+
+  let queryType = req.query.type;
+  //   let test = req.query.test;
+  let filteredTask = [];
+  if (queryType) {
+    filteredTask = tasks.filter((t) => t.type == queryType);
+  } else {
+    filteredTask = tasks;
+  }
   res.json({
     status: true,
     message: "Task Found",
@@ -64,29 +73,46 @@ app.post("/api/v1/tasks", async (req, res) => {
   // let task = req.body;
   // tasks.push(task);
   // console.log(task);
-
-  let task = new Task(req.body);
-  await task.save();
-  res.json({
-    status: true,
-    message: "Task Created",
-    task,
-  });
+  try {
+    let task = new Task(req.body);
+    await task.save();
+    res.json({
+      status: true,
+      message: "Task Created",
+      task,
+    });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({
+      status: false,
+      message: "Server error occured",
+    });
+  }
 });
 // update user
 app.patch("/api/v1/tasks/:taskid", async (req, res) => {
-  let id = req.params.taskid;
-  let updatedData = req.body;
-  // { name: 'ghanshyam' }
-  // let task = tasks.find((u) => u.id == id);
-  // task.type = updatedData.type;
+  try {
+    let id = req.params.taskid;
+    let updatedData = req.body;
+    // { name: 'ghanshyam' }
+    // let task = tasks.find((u) => u.id == id);
+    // task.type = updatedData.type;
 
-  let task = await Task.findByIdAndUpdate(id, updatedData, { new: true });
-  res.json({
-    status: true,
-    message: "Task updated",
-    task,
-  });
+    let task = await Task.findByIdAndUpdate(id, updatedData, { new: true });
+    res.json({
+      status: true,
+      message: "Task updated",
+      task,
+    });
+  } catch (err) {
+    console.log(err);
+
+    return res.status(500).json({
+      status: false,
+      message: "Task could not be updated",
+      err: err.message,
+    });
+  }
 });
 // delete user
 app.delete("/api/v1/tasks/:taskid", async (req, res) => {
